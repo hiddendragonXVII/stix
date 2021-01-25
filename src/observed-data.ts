@@ -64,6 +64,7 @@ export type Core = Properties;
  * via the `patternProperty` "^[a-z][a-z0-9_]{0,245}_bin$".
  */
 export type Binary = string;
+
 /**
  * The hex data type encodes an array of octets (8-bit bytes) as hexadecimal. The string MUST consist of an even number of hexadecimal characters, which are the digits '0' through '9' and the letters 'a' through 'f'.  In order to allow pattern matching on custom objects, all properties that use the hex type, the property name MUST end with '_hex'.
  *
@@ -71,6 +72,7 @@ export type Binary = string;
  * via the `patternProperty` "^[a-z][a-z0-9_]{0,245}_hex$".
  */
 export type Hex = string;
+
 /**
  * The beginning of the time window that the data was observed during.
  */
@@ -96,7 +98,7 @@ export type Artifact = CyberObservableCore & {
    * The value of this property MUST be a valid MIME type as specified in the IANA Media Types registry.
    */
   mime_type: string;
-  payload_bin?: Binary1;
+  payload_bin?: BinaryPayload;
   url?: UrlRegex;
   hashes?: Hashes;
   /**
@@ -121,7 +123,7 @@ export type Artifact = CyberObservableCore & {
 /**
  * Specifies the binary data contained in the artifact as a base64-encoded string.
  */
-export type Binary1 = string;
+export type BinaryPayload = string;
 /**
  * The value of this property MUST be a valid URL that resolves to the unencoded content.
  */
@@ -337,7 +339,7 @@ export type File = (CyberObservableCore & {
    * The File Object defines the following extensions. In addition to these, producers MAY create their own. Extensions: ntfs-ext, raster-image-ext, pdf-ext, archive-ext, windows-pebinary-ext
    */
   extensions?: Dictionary;
-  hashes?: Hashes1;
+  hashes?: FileHashes;
   /**
    * Specifies the size of the file, in bytes, as a non-negative integer.
    */
@@ -377,7 +379,7 @@ export type File = (CyberObservableCore & {
 /**
  * Specifies a dictionary of hashes for the file.
  */
-export type Hashes1 = Dictionary;
+export type FileHashes = Dictionary;
 /**
  * Specifies the hexadecimal constant ('magic number') associated with a specific file format that corresponds to the file, if applicable.
  */
@@ -483,8 +485,8 @@ export type NetworkTraffic = (CyberObservableCore & {
    * The Network Traffic Object defines the following extensions. In addition to these, producers MAY create their own. Extensions: http-ext, tcp-ext, icmp-ext, socket-ext
    */
   extensions?: Dictionary;
-  start?: Timestamp9;
-  end?: Timestamp10;
+  start?: NetworkTrafficInitiated;
+  end?: NetworkTrafficEnded;
   /**
    * Specifies the source of the network traffic, as a reference to an Observable Object.
    */
@@ -566,11 +568,11 @@ export type NetworkTraffic = (CyberObservableCore & {
 /**
  * Specifies the date/time the network traffic was initiated, if known.
  */
-export type Timestamp9 = string;
+export type NetworkTrafficInitiated = string;
 /**
  * Specifies the date/time the network traffic ended, if known.
  */
-export type Timestamp10 = string;
+export type NetworkTrafficEnded = string;
 /**
  * The Process Object represents common properties of an instance of a computer program as executed on an operating system.
  */
@@ -601,7 +603,7 @@ export type Process = (CyberObservableCore & {
    * Specifies the full command line used in executing the process, including the process name (which may be specified individually via the binary_ref.name property) and any arguments.
    */
   command_line?: string;
-  environment_variables?: Dictionary1;
+  environment_variables?: EnvironmentVariables;
   /**
    * Specifies the list of network connections opened by the process, as a reference to one or more Network Traffic Objects.
    */
@@ -786,7 +788,7 @@ export type WindowsRegistryKey = (CyberObservableCore & {
       [k: string]: unknown;
     }
   )[];
-  modified_time?: Timestamp17;
+  modified_time?: RegistryKeyModified;
   /**
    * Specifies a reference to a user account, represented as a User Account Object, that created the registry key.
    */
@@ -802,7 +804,7 @@ export type WindowsRegistryKey = (CyberObservableCore & {
 /**
  * Specifies the last date/time that the registry key was modified.
  */
-export type Timestamp17 = string;
+export type RegistryKeyModified = string;
 /**
  * The X509 Certificate Object represents the properties of an X.509 certificate.
  */
@@ -816,7 +818,7 @@ export type X509Certificate = CyberObservableCore & {
    * Specifies whether the certificate is self-signed, i.e., whether it is signed by the same entity whose identity it certifies.
    */
   is_self_signed?: boolean;
-  hashes?: Hashes2;
+  hashes?: CertificateHashes;
   /**
    * Specifies the version of the encoded certificate.
    */
@@ -903,8 +905,8 @@ export type X509Certificate = CyberObservableCore & {
      * Specifies the number of additional certificates that may appear in the path before anyPolicy is no longer permitted.
      */
     inhibit_any_policy?: string;
-    private_key_usage_period_not_before?: Timestamp20;
-    private_key_usage_period_not_after?: Timestamp21;
+    private_key_usage_period_not_before?: PrivateKeyBecomesValid;
+    private_key_usage_period_not_after?: PrivateKeyExpires;
     /**
      * Specifies a sequence of one or more policy information terms, each of which consists of an object identifier (OID) and optional qualifiers.
      */
@@ -924,7 +926,7 @@ export type X509Certificate = CyberObservableCore & {
 /**
  * Specifies any hashes that were calculated for the entire contents of the certificate.
  */
-export type Hashes2 = Dictionary;
+export type CertificateHashes = Dictionary;
 /**
  * Specifies the date on which the certificate validity period begins.
  */
@@ -936,11 +938,11 @@ export type CertificateValidityEndTimestamp = string;
 /**
  * Specifies the date on which the validity period begins for the private key, if it is different from the validity period of the certificate.
  */
-export type Timestamp20 = string;
+export type PrivateKeyBecomesValid = string;
 /**
  * Specifies the date on which the validity period ends for the private key, if it is different from the validity period of the certificate.
  */
-export type Timestamp21 = string;
+export type PrivateKeyExpires = string;
 /**
  * Represents identifiers across the CTI specifications. The format consists of the name of the top-level object being identified, followed by two dashes (--), followed by a UUIDv4.
  */
@@ -965,7 +967,7 @@ export interface Dictionary {
    * This interface was referenced by `Dictionary`'s JSON-Schema definition
    * via the `patternProperty` "^[a-zA-Z0-9_-]{0,250}$".
    *
-   * This interface was referenced by `Dictionary1`'s JSON-Schema definition
+   * This interface was referenced by `EnvironmentVariables`'s JSON-Schema definition
    * via the `patternProperty` "^[a-zA-Z0-9_-]{0,250}$".
    */
   [k: string]:
@@ -980,12 +982,12 @@ export interface Dictionary {
 /**
  * Specifies the list of environment variables associated with the process as a dictionary.
  */
-export interface Dictionary1 {
+export interface EnvironmentVariables {
   /**
    * This interface was referenced by `Dictionary`'s JSON-Schema definition
    * via the `patternProperty` "^[a-zA-Z0-9_-]{0,250}$".
    *
-   * This interface was referenced by `Dictionary1`'s JSON-Schema definition
+   * This interface was referenced by `EnvironmentVariables`'s JSON-Schema definition
    * via the `patternProperty` "^[a-zA-Z0-9_-]{0,250}$".
    */
   [k: string]:

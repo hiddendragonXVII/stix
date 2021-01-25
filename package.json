@@ -1,6 +1,6 @@
 {
   "name": "stix",
-  "version": "1.2.6",
+  "version": "0.0.5",
   "description": "Stix Typescript types",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

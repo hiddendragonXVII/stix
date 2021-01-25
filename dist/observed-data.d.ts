@@ -76,7 +76,7 @@ export declare type Artifact = CyberObservableCore & {
      * The value of this property MUST be a valid MIME type as specified in the IANA Media Types registry.
      */
     mime_type: string;
-    payload_bin?: Binary1;
+    payload_bin?: BinaryPayload;
     url?: UrlRegex;
     hashes?: Hashes;
     /**
@@ -98,7 +98,7 @@ export declare type Artifact = CyberObservableCore & {
 /**
  * Specifies the binary data contained in the artifact as a base64-encoded string.
  */
-export declare type Binary1 = string;
+export declare type BinaryPayload = string;
 /**
  * The value of this property MUST be a valid URL that resolves to the unencoded content.
  */
@@ -307,7 +307,7 @@ export declare type File = (CyberObservableCore & {
      * The File Object defines the following extensions. In addition to these, producers MAY create their own. Extensions: ntfs-ext, raster-image-ext, pdf-ext, archive-ext, windows-pebinary-ext
      */
     extensions?: Dictionary;
-    hashes?: Hashes1;
+    hashes?: FileHashes;
     /**
      * Specifies the size of the file, in bytes, as a non-negative integer.
      */
@@ -347,7 +347,7 @@ export declare type File = (CyberObservableCore & {
 /**
  * Specifies a dictionary of hashes for the file.
  */
-export declare type Hashes1 = Dictionary;
+export declare type FileHashes = Dictionary;
 /**
  * Specifies the hexadecimal constant ('magic number') associated with a specific file format that corresponds to the file, if applicable.
  */
@@ -453,8 +453,8 @@ export declare type NetworkTraffic = (CyberObservableCore & {
      * The Network Traffic Object defines the following extensions. In addition to these, producers MAY create their own. Extensions: http-ext, tcp-ext, icmp-ext, socket-ext
      */
     extensions?: Dictionary;
-    start?: Timestamp9;
-    end?: Timestamp10;
+    start?: NetworkTrafficInitiated;
+    end?: NetworkTrafficEnded;
     /**
      * Specifies the source of the network traffic, as a reference to an Observable Object.
      */
@@ -532,11 +532,11 @@ export declare type NetworkTraffic = (CyberObservableCore & {
 /**
  * Specifies the date/time the network traffic was initiated, if known.
  */
-export declare type Timestamp9 = string;
+export declare type NetworkTrafficInitiated = string;
 /**
  * Specifies the date/time the network traffic ended, if known.
  */
-export declare type Timestamp10 = string;
+export declare type NetworkTrafficEnded = string;
 /**
  * The Process Object represents common properties of an instance of a computer program as executed on an operating system.
  */
@@ -567,7 +567,7 @@ export declare type Process = (CyberObservableCore & {
      * Specifies the full command line used in executing the process, including the process name (which may be specified individually via the binary_ref.name property) and any arguments.
      */
     command_line?: string;
-    environment_variables?: Dictionary1;
+    environment_variables?: EnvironmentVariables;
     /**
      * Specifies the list of network connections opened by the process, as a reference to one or more Network Traffic Objects.
      */
@@ -748,7 +748,7 @@ export declare type WindowsRegistryKey = (CyberObservableCore & {
     } | {
         [k: string]: unknown;
     })[];
-    modified_time?: Timestamp17;
+    modified_time?: RegistryKeyModified;
     /**
      * Specifies a reference to a user account, represented as a User Account Object, that created the registry key.
      */
@@ -764,7 +764,7 @@ export declare type WindowsRegistryKey = (CyberObservableCore & {
 /**
  * Specifies the last date/time that the registry key was modified.
  */
-export declare type Timestamp17 = string;
+export declare type RegistryKeyModified = string;
 /**
  * The X509 Certificate Object represents the properties of an X.509 certificate.
  */
@@ -778,7 +778,7 @@ export declare type X509Certificate = CyberObservableCore & {
      * Specifies whether the certificate is self-signed, i.e., whether it is signed by the same entity whose identity it certifies.
      */
     is_self_signed?: boolean;
-    hashes?: Hashes2;
+    hashes?: CertificateHashes;
     /**
      * Specifies the version of the encoded certificate.
      */
@@ -865,8 +865,8 @@ export declare type X509Certificate = CyberObservableCore & {
          * Specifies the number of additional certificates that may appear in the path before anyPolicy is no longer permitted.
          */
         inhibit_any_policy?: string;
-        private_key_usage_period_not_before?: Timestamp20;
-        private_key_usage_period_not_after?: Timestamp21;
+        private_key_usage_period_not_before?: PrivateKeyBecomesValid;
+        private_key_usage_period_not_after?: PrivateKeyExpires;
         /**
          * Specifies a sequence of one or more policy information terms, each of which consists of an object identifier (OID) and optional qualifiers.
          */
@@ -886,7 +886,7 @@ export declare type X509Certificate = CyberObservableCore & {
 /**
  * Specifies any hashes that were calculated for the entire contents of the certificate.
  */
-export declare type Hashes2 = Dictionary;
+export declare type CertificateHashes = Dictionary;
 /**
  * Specifies the date on which the certificate validity period begins.
  */
@@ -898,11 +898,11 @@ export declare type CertificateValidityEndTimestamp = string;
 /**
  * Specifies the date on which the validity period begins for the private key, if it is different from the validity period of the certificate.
  */
-export declare type Timestamp20 = string;
+export declare type PrivateKeyBecomesValid = string;
 /**
  * Specifies the date on which the validity period ends for the private key, if it is different from the validity period of the certificate.
  */
-export declare type Timestamp21 = string;
+export declare type PrivateKeyExpires = string;
 /**
  * Represents identifiers across the CTI specifications. The format consists of the name of the top-level object being identified, followed by two dashes (--), followed by a UUIDv4.
  */
@@ -926,7 +926,7 @@ export interface Dictionary {
      * This interface was referenced by `Dictionary`'s JSON-Schema definition
      * via the `patternProperty` "^[a-zA-Z0-9_-]{0,250}$".
      *
-     * This interface was referenced by `Dictionary1`'s JSON-Schema definition
+     * This interface was referenced by `EnvironmentVariables`'s JSON-Schema definition
      * via the `patternProperty` "^[a-zA-Z0-9_-]{0,250}$".
      */
     [k: string]: unknown[] | string | number | boolean | {
@@ -936,12 +936,12 @@ export interface Dictionary {
 /**
  * Specifies the list of environment variables associated with the process as a dictionary.
  */
-export interface Dictionary1 {
+export interface EnvironmentVariables {
     /**
      * This interface was referenced by `Dictionary`'s JSON-Schema definition
      * via the `patternProperty` "^[a-zA-Z0-9_-]{0,250}$".
      *
-     * This interface was referenced by `Dictionary1`'s JSON-Schema definition
+     * This interface was referenced by `EnvironmentVariables`'s JSON-Schema definition
      * via the `patternProperty` "^[a-zA-Z0-9_-]{0,250}$".
      */
     [k: string]: unknown[] | string | number | boolean | {
