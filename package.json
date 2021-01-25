@@ -1,0 +1,40 @@
+{
+  "name": "stix",
+  "version": "1.2.6",
+  "description": "Stix Typescript types",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "directories": {
+    "src": "src"
+  },
+  "scripts": {
+    "build:types": "tsc --emitDeclarationOnly ",
+    "build": "babel src --out-dir dist --extensions .ts,.tsx",
+    "build:docs": "typedoc --mode file",
+    "make": "tsc ./compile.ts",
+    "compile": "node ./compile.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.nrel.gov/CyberSecurity/oscal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-typescript": "^7.12.7",
+    "@cocopina/transform-keys": "^1.0.0",
+    "@types/lodash": "^4.14.166",
+    "ajv": "^7.0.2",
+    "ajv-formats": "^1.5.1",
+    "babel": "^6.23.0",
+    "camelcase-keys": "^6.2.2",
+    "json-schema-to-typescript": "^10.0.3",
+    "kebabcase-keys": "^1.0.0",
+    "snakecase-keys": "^3.2.1",
+    "typescript": "^4.1.3"
+  }
+}
