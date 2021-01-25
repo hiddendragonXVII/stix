@@ -10,7 +10,7 @@ export declare type Infrastructure = Core & {
     /**
      * The type of this object, which MUST be the literal `infrastructure`.
      */
-    type?: "infrastructure";
+    type: "infrastructure";
     id?: Id;
     /**
      * The name used to identify the Infrastructure.
@@ -32,8 +32,8 @@ export declare type Infrastructure = Core & {
      * The list of kill chain phases for which this infrastructure is used.
      */
     kill_chain_phases?: KillChainPhase[];
-    first_seen?: Timestamp;
-    last_seen?: Timestamp1;
+    first_seen?: InfrastructureFirstSeenTimestamp;
+    last_seen?: InfrastructureLastSeenTimestamp;
     [k: string]: unknown;
 };
 /**
@@ -57,11 +57,11 @@ export declare type Hex = string;
 /**
  * The time that this infrastructure was first seen performing malicious activities.
  */
-export declare type Timestamp = string;
+export declare type InfrastructureFirstSeenTimestamp = string;
 /**
  * The time that this infrastructure was last seen performing malicious activities.
  */
-export declare type Timestamp1 = string;
+export declare type InfrastructureLastSeenTimestamp = string;
 /**
  * Rules for custom properties
  */

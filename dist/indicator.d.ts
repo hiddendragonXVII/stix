@@ -10,7 +10,7 @@ export declare type Indicator = Core & {
     /**
      * The type of this object, which MUST be the literal `indicator`.
      */
-    type?: "indicator";
+    type: "indicator";
     id?: Id;
     /**
      * This field is an Open Vocabulary that specifies the type of indicator. Open vocab - indicator-type-ov
@@ -31,13 +31,13 @@ export declare type Indicator = Core & {
     /**
      * The type of pattern used in this indicator.
      */
-    pattern_type?: string;
+    pattern_type: string;
     /**
      * The version of the pattern that is used.
      */
     pattern_version?: string;
-    valid_from?: Timestamp;
-    valid_until?: Timestamp1;
+    valid_from?: ValidFromTimestamp;
+    valid_until?: ValidUntilTimestamp;
     /**
      * The phases of the kill chain that this indicator detects.
      */
@@ -65,11 +65,11 @@ export declare type Hex = string;
 /**
  * The time from which this indicator should be considered valuable intelligence.
  */
-export declare type Timestamp = string;
+export declare type ValidFromTimestamp = string;
 /**
  * The time at which this indicator should no longer be considered valuable intelligence.
  */
-export declare type Timestamp1 = string;
+export declare type ValidUntilTimestamp = string;
 /**
  * Rules for custom properties
  */

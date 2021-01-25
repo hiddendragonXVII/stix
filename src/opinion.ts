@@ -12,7 +12,7 @@ export type Opinion = Core & {
   /**
    * The type of this object, which MUST be the literal `opinion`.
    */
-  type?: "opinion";
+  type: "opinion";
   id?: Id;
   /**
    * An explanation of why the producer has this Opinion.

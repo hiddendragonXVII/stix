@@ -12,7 +12,7 @@ export type IntrusionSet = Core & {
   /**
    * The type of this object, which MUST be the literal `intrusion-set`.
    */
-  type?: "intrusion-set";
+  type: "intrusion-set";
   id?: Id;
   /**
    * The name used to identify the Intrusion Set.
@@ -26,8 +26,8 @@ export type IntrusionSet = Core & {
    * Alternative names used to identify this Intrusion Set.
    */
   aliases?: string[];
-  first_seen?: Timestamp;
-  last_seen?: Timestamp1;
+  first_seen?: IntrusionSetFirstSeen;
+  last_seen?: IntrusionSetLastSeen;
   /**
    * The high level goals of this Intrusion Set, namely, what are they trying to do.
    */
@@ -67,11 +67,11 @@ export type Hex = string;
 /**
  * The time that this Intrusion Set was first seen.
  */
-export type Timestamp = string;
+export type IntrusionSetFirstSeen = string;
 /**
  * The time that this Intrusion Set was last seen.
  */
-export type Timestamp1 = string;
+export type IntrusionSetLastSeen = string;
 
 /**
  * Rules for custom properties

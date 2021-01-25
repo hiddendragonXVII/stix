@@ -10,7 +10,7 @@ export declare type Campaign = Core & {
     /**
      * The type of this object, which MUST be the literal `campaign`.
      */
-    type?: "campaign";
+    type: "campaign";
     id?: Id;
     /**
      * The name used to identify the Campaign.
@@ -24,8 +24,8 @@ export declare type Campaign = Core & {
      * Alternative names used to identify this campaign.
      */
     aliases?: string[];
-    first_seen?: Timestamp;
-    last_seen?: Timestamp1;
+    first_seen?: CampaignFirstSeenTimestamp;
+    last_seen?: CampaignLastSeenTimestamp;
     /**
      * This field defines the Campaign’s primary goal, objective, desired outcome, or intended effect.
      */
@@ -53,11 +53,11 @@ export declare type Hex = string;
 /**
  * The time that this Campaign was first seen.
  */
-export declare type Timestamp = string;
+export declare type CampaignFirstSeenTimestamp = string;
 /**
  * The time that this Campaign was last seen.
  */
-export declare type Timestamp1 = string;
+export declare type CampaignLastSeenTimestamp = string;
 /**
  * Rules for custom properties
  */

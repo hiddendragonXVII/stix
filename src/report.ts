@@ -12,7 +12,7 @@ export type Report = Core & {
   /**
    * The type of this object, which MUST be the literal `report`.
    */
-  type?: "report";
+  type: "report";
   id?: Id;
   /**
    * This field is an Open Vocabulary that specifies the primary subject of this report. The suggested values for this field are in report-type-ov.

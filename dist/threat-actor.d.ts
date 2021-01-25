@@ -10,7 +10,7 @@ export declare type ThreatActor = Core & {
     /**
      * The type of this object, which MUST be the literal `threat-actor`.
      */
-    type?: "threat-actor";
+    type: "threat-actor";
     id?: Id;
     /**
      * This field specifies the type of threat actor. Open Vocab - threat-actor-type-ov
@@ -36,8 +36,8 @@ export declare type ThreatActor = Core & {
      * The high level goals of this Threat Actor, namely, what are they trying to do.
      */
     goals?: string[];
-    first_seen?: Timestamp;
-    last_seen?: Timestamp1;
+    first_seen?: ThreatActorFirstSeen;
+    last_seen?: ThreatActorLastSeen;
     /**
      * The skill, specific knowledge, special training, or expertise a Threat Actor must have to perform the attack. Open Vocab - threat-actor-sophistication-ov
      */
@@ -81,11 +81,11 @@ export declare type Hex = string;
 /**
  * The time that this Threat Actor was first seen.
  */
-export declare type Timestamp = string;
+export declare type ThreatActorFirstSeen = string;
 /**
  * The time that this Threat Actor was last seen.
  */
-export declare type Timestamp1 = string;
+export declare type ThreatActorLastSeen = string;
 /**
  * Rules for custom properties
  */

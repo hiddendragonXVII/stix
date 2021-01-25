@@ -6,45 +6,6 @@
  */
 
 /**
- * Identities can represent actual individuals, organizations, or groups (e.g., ACME, Inc.) as well as classes of individuals, organizations, or groups.
- */
-export type Identity = Core & {
-  /**
-   * The type of this object, which MUST be the literal `identity`.
-   */
-  type: "identity";
-  id?: Id;
-  /**
-   * The list of roles that this Identity performs (e.g., CEO, Domain Administrators, Doctors, Hospital, or Retailer). No open vocabulary is yet defined for this property.
-   */
-  roles?: string[];
-  /**
-   * The name of this Identity.
-   */
-  name?: string;
-  /**
-   * A description that provides more details and context about the Identity.
-   */
-  description?: string;
-  /**
-   * The type of entity that this Identity describes, e.g., an individual or organization. Open Vocab - identity-class-ov
-   */
-  identity_class?: string;
-  /**
-   * The list of sectors that this Identity belongs to. Open Vocab - industry-sector-ov
-   */
-  sectors?: string[];
-  /**
-   * The contact information (e-mail, phone number, etc.) for this Identity.
-   */
-  contact_information?: string;
-  [k: string]: unknown;
-};
-/**
- * Common properties and behavior across all STIX Domain Objects and STIX Relationship Objects.
- */
-export type Core = Properties;
-/**
  * The ​binary data type represents a sequence of bytes. In order to allow pattern matching on custom objects, for all properties that use the binary type, the property name MUST end with '_bin'. The JSON MTI serialization represents this as a base64-­encoded string as specified in RFC4648​. Other serializations SHOULD use a native binary type, if available.
  *
  * This interface was referenced by `Properties`'s JSON-Schema definition
@@ -63,6 +24,3 @@ export type Hex = string;
  * Rules for custom properties
  */
 export interface Properties {}
-export interface Id {
-  [k: string]: unknown;
-}

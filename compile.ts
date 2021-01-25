@@ -11,23 +11,26 @@ interface compilationTarget {
     schema: string
 }
 
-const sdos = ["attack-pattern", "campaign",
-    "course-of-action", "grouping", "identity",
-    "indicator", "infrastructure", "intrusion-set",
-    "location", "malware", "malware-analysis", "note",
-    "observed-data", "opinion", "report", "threat-actor",
-    "tool", "vulnerability"]
+// const sdos = ["attack-pattern", "campaign",
+//     "course-of-action", "grouping", "identity",
+//     "indicator", "infrastructure", "intrusion-set",
+//     "location", "malware", "malware-analysis", "note",
+//     "observed-data", "opinion", "report", "threat-actor",
+//     "tool", "vulnerability"]
 
 const main = () => {
-    const schemas: compilationTarget[] = sdos.map(sdo => {
-        return {
-            schema: "./schemas/sdos/" + sdo + ".json",
-            target: "./src/" + sdo + ".ts"
-        }
-    })
-
+    // const schemas: compilationTarget[] = sdos.map(sdo => {
+    //     return {
+    //         schema: "./schemas/sdos/" + sdo + ".json",
+    //         target: "./src/" + sdo + ".ts"
+    //     }
+    // })
+    const schemas: compilationTarget[] = [{
+        schema: "./schemas/common/properties.json",
+        target:"./src/properties.ts"
+    }]
     schemas.forEach(({ target, schema }) => {
-        compileFromFile(schema, {ignoreMinAndMaxItems:true})
+        compileFromFile(schema, { ignoreMinAndMaxItems: true })
             .then(compiled => {
                 writeFileSync(target, compiled);
             });

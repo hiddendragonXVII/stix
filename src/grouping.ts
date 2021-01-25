@@ -12,7 +12,7 @@ export type Grouping = Core & {
   /**
    * The type of this object, which MUST be the literal `grouping`.
    */
-  type?: "grouping";
+  type: "grouping";
   id?: Id;
   /**
    * A name used to identify the Grouping.

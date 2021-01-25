@@ -10,7 +10,7 @@ export declare type Identity = Core & {
     /**
      * The type of this object, which MUST be the literal `identity`.
      */
-    type?: "identity";
+    type: "identity";
     id?: Id;
     /**
      * The list of roles that this Identity performs (e.g., CEO, Domain Administrators, Doctors, Hospital, or Retailer). No open vocabulary is yet defined for this property.

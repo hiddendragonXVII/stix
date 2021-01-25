@@ -10,7 +10,7 @@ export declare type Tool = Core & {
     /**
      * The type of this object, which MUST be the literal `tool`.
      */
-    type?: "tool";
+    type: "tool";
     id?: Id;
     /**
      * Alternative names used to identify this Tool.

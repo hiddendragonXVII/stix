@@ -12,7 +12,7 @@ export type Location = Core & {
   /**
    * The type of this object, which MUST be the literal `location`.
    */
-  type?: "location";
+  type: "location";
   id?: Id;
   /**
    * A textual description of the Location.

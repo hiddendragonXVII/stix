@@ -12,7 +12,7 @@ export type AttackPattern = Core & {
   /**
    * The type of this object, which MUST be the literal `attack-pattern`.
    */
-  type?: "attack-pattern";
+  type: "attack-pattern";
   /**
    * Alternative names used to identify this Attack Pattern.
    */

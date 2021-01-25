@@ -5,6 +5,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
+
 /**
  * Infrastructure objects describe systems, software services, and associated physical or virtual resources.
  */
@@ -12,7 +13,7 @@ export type Infrastructure = Core & {
   /**
    * The type of this object, which MUST be the literal `infrastructure`.
    */
-  type?: "infrastructure";
+  type: "infrastructure";
   id?: Id;
   /**
    * The name used to identify the Infrastructure.
@@ -34,8 +35,8 @@ export type Infrastructure = Core & {
    * The list of kill chain phases for which this infrastructure is used.
    */
   kill_chain_phases?: KillChainPhase[];
-  first_seen?: Timestamp;
-  last_seen?: Timestamp1;
+  first_seen?: InfrastructureFirstSeenTimestamp;
+  last_seen?: InfrastructureLastSeenTimestamp;
   [k: string]: unknown;
 };
 /**
@@ -59,11 +60,11 @@ export type Hex = string;
 /**
  * The time that this infrastructure was first seen performing malicious activities.
  */
-export type Timestamp = string;
+export type InfrastructureFirstSeenTimestamp = string;
 /**
  * The time that this infrastructure was last seen performing malicious activities.
  */
-export type Timestamp1 = string;
+export type InfrastructureLastSeenTimestamp = string;
 
 /**
  * Rules for custom properties

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>KillChainPhase | stix</title>
+	<title>GranularMarking | stix</title>
 	<meta name="description" content="Documentation for stix">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="killchainphase.html">KillChainPhase</a>
+					<a href="granularmarking.html">GranularMarking</a>
 				</li>
 			</ul>
-			<h1>Interface KillChainPhase</h1>
+			<h1>Interface GranularMarking</h1>
 		</div>
 	</div>
 </header>
@@ -69,11 +69,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>The kill-chain-phase represents a phase in a kill chain.
-							The kill-chain-phase represents a phase in a kill chain.
-							The kill-chain-phase represents a phase in a kill chain.
-							The kill-chain-phase represents a phase in a kill chain.
-						The kill-chain-phase represents a phase in a kill chain.</p>
+						<p>The granular-marking type defines how the list of marking-definition objects referenced by the marking_refs property to apply to a set of content identified by the list of selectors in the selectors property.</p>
 					</div>
 				</div>
 			</section>
@@ -81,7 +77,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">KillChainPhase</span>
+						<span class="target">GranularMarking</span>
 					</li>
 				</ul>
 			</section>
@@ -90,11 +86,7 @@
 				<div class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">[</span>k: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">unknown</span></div>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>The kill-chain-phase represents a phase in a kill chain.
-							The kill-chain-phase represents a phase in a kill chain.
-							The kill-chain-phase represents a phase in a kill chain.
-							The kill-chain-phase represents a phase in a kill chain.
-						The kill-chain-phase represents a phase in a kill chain.</p>
+						<p>The granular-marking type defines how the list of marking-definition objects referenced by the marking_refs property to apply to a set of content identified by the list of selectors in the selectors property.</p>
 					</div>
 				</div>
 			</section>
@@ -105,8 +97,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="killchainphase.html#kill_chain_name" class="tsd-kind-icon">kill_<wbr>chain_<wbr>name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="killchainphase.html#phase_name" class="tsd-kind-icon">phase_<wbr>name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="granularmarking.html#lang" class="tsd-kind-icon">lang</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="granularmarking.html#marking_ref" class="tsd-kind-icon">marking_<wbr>ref</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="granularmarking.html#selectors" class="tsd-kind-icon">selectors</a></li>
 							</ul>
 						</section>
 					</div>
@@ -115,48 +108,42 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="kill_chain_name" class="tsd-anchor"></a>
-					<h3>kill_<wbr>chain_<wbr>name</h3>
-					<div class="tsd-signature tsd-kind-icon">kill_<wbr>chain_<wbr>name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="lang" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> lang</h3>
+					<div class="tsd-signature tsd-kind-icon">lang<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/attack-pattern.ts:68</li>
-							<li>Defined in src/infrastructure.ts:83</li>
-							<li>Defined in src/indicator.ts:90</li>
-							<li>Defined in src/malware.ts:124</li>
-							<li>Defined in src/tool.ts:76</li>
+							<li>Defined in src/core.ts:150</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The name of the kill chain.
-								The name of the kill chain.
-								The name of the kill chain.
-								The name of the kill chain.
-							The name of the kill chain.</p>
+							<p>Identifies the language of the text identified by this marking.</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="phase_name" class="tsd-anchor"></a>
-					<h3>phase_<wbr>name</h3>
-					<div class="tsd-signature tsd-kind-icon">phase_<wbr>name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="marking_ref" class="tsd-anchor"></a>
+					<h3>marking_<wbr>ref</h3>
+					<div class="tsd-signature tsd-kind-icon">marking_<wbr>ref<span class="tsd-signature-symbol">:</span> <a href="../globals.html#ctiidentifier" class="tsd-signature-type">CTIIdentifier</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{}</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/attack-pattern.ts:72</li>
-							<li>Defined in src/infrastructure.ts:87</li>
-							<li>Defined in src/indicator.ts:94</li>
-							<li>Defined in src/malware.ts:128</li>
-							<li>Defined in src/tool.ts:80</li>
+							<li>Defined in src/core.ts:151</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="selectors" class="tsd-anchor"></a>
+					<h3>selectors</h3>
+					<div class="tsd-signature tsd-kind-icon">selectors<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/core.ts:146</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The name of the phase in the kill chain.
-								The name of the phase in the kill chain.
-								The name of the phase in the kill chain.
-								The name of the phase in the kill chain.
-							The name of the phase in the kill chain.</p>
+							<p>A list of selectors for content contained within the STIX object in which this property appears.</p>
 						</div>
 					</div>
 				</section>
@@ -175,13 +162,16 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="killchainphase.html" class="tsd-kind-icon">Kill<wbr>Chain<wbr>Phase</a>
+						<a href="granularmarking.html" class="tsd-kind-icon">Granular<wbr>Marking</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="killchainphase.html#kill_chain_name" class="tsd-kind-icon">kill_<wbr>chain_<wbr>name</a>
+								<a href="granularmarking.html#lang" class="tsd-kind-icon">lang</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="killchainphase.html#phase_name" class="tsd-kind-icon">phase_<wbr>name</a>
+								<a href="granularmarking.html#marking_ref" class="tsd-kind-icon">marking_<wbr>ref</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="granularmarking.html#selectors" class="tsd-kind-icon">selectors</a>
 							</li>
 						</ul>
 					</li>
