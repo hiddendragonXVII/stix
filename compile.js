@@ -12,7 +12,7 @@ var main = function () {
     var schemas = sdos.map(function (sdo) {
         return {
             schema: "./schemas/sdos/" + sdo + ".json",
-            target: "./src/" + sdo + ".d.ts"
+            target: "./src/" + sdo + ".ts"
         };
     });
     schemas.forEach(function (_a) {

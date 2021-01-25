@@ -22,7 +22,7 @@ const main = () => {
     const schemas: compilationTarget[] = sdos.map(sdo => {
         return {
             schema: "./schemas/sdos/" + sdo + ".json",
-            target: "./src/" + sdo + ".d.ts"
+            target: "./src/" + sdo + ".ts"
         }
     })
 
