@@ -29,7 +29,7 @@ export type Campaign = Core & {
   first_seen?: CampaignFirstSeenTimestamp;
   last_seen?: CampaignLastSeenTimestamp;
   /**
-   * This field defines the Campaign’s primary goal, objective, desired outcome, or intended effect.
+   * This field defines the Campaign's primary goal, objective, desired outcome, or intended effect.
    */
   objective?: string;
   [k: string]: unknown;

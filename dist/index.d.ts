@@ -15,3 +15,5 @@ export { Report } from "./report";
 export { ThreatActor } from "./threat-actor";
 export { Tool } from "./tool";
 export { Vulnerability } from "./vulnerability";
+export { Relationship } from "./relationship";
+export { Identity } from "./identity";

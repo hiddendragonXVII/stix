@@ -3,33 +3,37 @@
  * DO NOT MODIFY IT BY HAND. Instead, modify the source JSONSchema file,
  * and run json-schema-to-typescript to regenerate this file.
  */
+import { Identifier, Timestamp } from "./core";
 /**
  * A Campaign is a grouping of adversary behavior that describes a set of malicious activities or attacks that occur over a period of time against a specific set of targets.
  */
-export declare type Campaign = Core & {
+export declare type Relationship = Core & {
     /**
-     * The type of this object, which MUST be the literal `campaign`.
+     * The type of this object, which MUST be the literal `relationship`.
      */
-    type: "campaign";
+    type: "relationship";
+    /**
+     * The name used to identify the type of relationship.
+     */
+    relationship_type?: string;
+    /**
+     * The name used to identify the Relationship.
+     */
     id?: Id;
     /**
-     * The name used to identify the Campaign.
-     */
-    name?: string;
-    /**
-     * A description that provides more details and context about the Campaign, potentially including its purpose and its key characteristics.
+     * A description that helps provide context about the relationship.
      */
     description?: string;
     /**
-     * Alternative names used to identify this campaign.
+     * The ID of the source (from) object.
      */
-    aliases?: string[];
-    first_seen?: CampaignFirstSeenTimestamp;
-    last_seen?: CampaignLastSeenTimestamp;
+    source_ref: Identifier;
     /**
-     * This field defines the Campaign's primary goal, objective, desired outcome, or intended effect.
+     * The ID of the target (to) object.
      */
-    objective?: string;
+    target_ref: Identifier;
+    start_time?: Timestamp;
+    stop_time?: Timestamp;
     [k: string]: unknown;
 };
 /**
