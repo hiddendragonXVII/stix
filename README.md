@@ -1,4 +1,4 @@
 # stix
-Structured Threat Information eXpression
+Structured Threat Information expression
 
-    npm install git://github.nrel.gov/CyberSecurity/stix.git
+    npm install https://github.com/NREL-CYBER/stix.git
